@@ -1,5 +1,7 @@
 package no.haakon.flatsum.exploratory;
 
+import java.util.List;
+
 public final class IntPair {
 	public int x;
 	public int y;
@@ -12,5 +14,10 @@ public final class IntPair {
 	public IntPair(int x, int y) {
 		this.x = x;
 		this.y = y;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("IntPair<%d, %d>", x, y);
 	}
 }

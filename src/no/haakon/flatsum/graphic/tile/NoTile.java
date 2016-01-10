@@ -11,18 +11,18 @@ import java.awt.image.BufferedImage;
 public class NoTile implements Tile {
     private int xCoordinate;
     private int yCoordinate;
-    private int topPixel;
     private int leftPixel;
+    private int topPixel;
     private int height;
     private int width;
     
-	public NoTile(int xCoordinate, int yCoordinate, int topPixel, int leftPixel, int height, int width){
+	public NoTile(int xCoordinate, int yCoordinate, int height, int width){
 	    this.xCoordinate = xCoordinate;
 	    this.yCoordinate = yCoordinate;
-	    this.topPixel = topPixel;
-	    this.leftPixel = leftPixel;
 	    this.height = height;
 	    this.width = width;
+	    this.leftPixel = xCoordinate * width;
+	    this.topPixel = yCoordinate * height;
 	}
 
 	@Override

@@ -6,11 +6,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 import com.opencsv.CSVReader;
 
+import no.haakon.flatsum.graphic.tile.NoTile;
 import no.haakon.flatsum.graphic.tile.StaticTile128x128;
 import no.haakon.flatsum.graphic.tile.Tile;
 import no.haakon.flatsum.level.Layer;
@@ -77,6 +79,7 @@ public class SimpleLayer128x128 implements Layer {
 				CSVReader reader = new CSVReader(freader);) {
 
 			List<String[]> lines = reader.readAll();
+			lines.forEach(line -> System.out.println(Arrays.toString(line)));
 			Tile[][] tiles = new Tile[lines.size()][];
 
 			for(int currentRow = 0; currentRow < tiles.length; ++currentRow) {
@@ -101,11 +104,23 @@ public class SimpleLayer128x128 implements Layer {
 		}
 	}
 
-	private static void makeLine(Tile[] tileLine, int yPosition, String[] sourceLine, Map<String,IntPair> nameMappings, SpriteSheet spriteSheet) {			
-		for(int xPosition = 0; xPosition < sourceLine.length; ++xPosition) {	
-			IntPair coords = nameMappings.get(sourceLine[xPosition]);
-			BufferedImage image = spriteSheet.getSprite(coords);
-			tileLine[xPosition] = StaticTile128x128.builder().tileXPosition(xPosition).tileYPosition(yPosition).image(image).build();
+	private static void makeLine(Tile[] tileLine, int yPosition, String[] sourceLine, Map<String,IntPair> nameMappings, SpriteSheet spriteSheet) {
+		for(int xPosition = 0; xPosition < sourceLine.length; ++xPosition) {
+			if(null == tileLine) {
+				throw new IllegalArgumentException("null sent as a tileLine");
+			}
+			String name = sourceLine[xPosition];
+			if(name == null || name.equals("")) {
+				tileLine[xPosition] = new NoTile(xPosition, yPosition, 128, 128);
+				System.out.print(" empty");
+			}
+			else {
+				IntPair coords = nameMappings.get(name);
+				BufferedImage image = spriteSheet.getSprite(coords);
+				tileLine[xPosition] = StaticTile128x128.builder().tileXPosition(xPosition).tileYPosition(yPosition).image(image).build();
+				System.out.print(" " + name);
+			}
 		}
+		System.out.println();
 	}
 }

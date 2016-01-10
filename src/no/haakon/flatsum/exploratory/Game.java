@@ -24,17 +24,17 @@ public class Game {
 		imageLoader.getNames().forEach(System.out::println);
 		SpriteSheet spriteSheet = new SpriteSheet(imageLoader.getImage("static-tiles"), 128, 128);
 		Window gameWindow = new Window("Test", 1024, 768);
-		Level level = FlatLevel.builder()
-				.addNames(new File("conf/spritesheets/level-tile-descriptions"))
-				.setSpriteSheet(spriteSheet)
-				.buildLevel(new File("lvl/testlvl/1.csv"));
+//		Level level = FlatLevel.builder()
+//				.addNames(new File("conf/spritesheets/level-tile-descriptions"))
+//				.setSpriteSheet(spriteSheet)
+//				.buildLevel(new File("lvl/testlvl/1.csv"));
 
-//		Level level = Level2Layer.builder()
-//					.addNames(new File("conf/spritesheets/level-tile-descriptions"))
-//					.setSpriteSheet(spriteSheet)
-//					.setLayer1(new File("lvl/testlvl/1.csv"))
-//					.setLayer2(new File("lvl/testlvl/2.csv"))
-//					.build();
+		Level level = Level2Layer.builder()
+					.addNames(new File("conf/spritesheets/level-tile-descriptions"))
+					.setSpriteSheet(spriteSheet)
+					.setLayer1(new File("lvl/testlvl/1.csv"))
+					.setLayer2(new File("lvl/testlvl/2.csv"))
+					.build();
 		GraphicWorkload workload = new PaintLevel(gameWindow.getCanvas(), level);
 		
 		workload.run();

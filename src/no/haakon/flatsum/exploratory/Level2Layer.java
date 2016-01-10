@@ -97,8 +97,8 @@ public class Level2Layer implements Level {
 			return this;
 		}
 
-		public Builder setLayer2(File layer1) {
-			this.layer1 = layer1;
+		public Builder setLayer2(File layer2) {
+			this.layer2 = layer2;
 			return this;
 		}
 
@@ -127,6 +127,7 @@ public class Level2Layer implements Level {
 		}
 
 		public Level2Layer build() throws FileNotFoundException {
+			validate();
 			Layer layer1 = SimpleLayer128x128.fromFile(this.layer1, tileNames, spriteSheet);
 			Layer layer2 = SimpleLayer128x128.fromFile(this.layer2, tileNames, spriteSheet);
 			
