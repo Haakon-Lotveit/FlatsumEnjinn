@@ -1,2 +1,3 @@
 static-tiles		gfx/spritesheets/static-tiles.png
 fighter				gfx/spritesheets/spritesheet-fighter128x128.png
+foreground-features gfx/spritesheets/features.png

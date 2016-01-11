@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 
@@ -117,36 +118,38 @@ public class SpriteMaker {
 
 	public static void usage() {
 		System.out.println("USAGE:");
-		System.out.println("java -jar flatsum.aux.SpriteMaker output filename, images' horizontal size, images' vertical size, list of files to be squished into a spritesheet.");
-		System.out.println("Example:");
-		System.out.println("java -jar flatsum.aux.SpriteMaker spritesheet-tiles.png 128 128 /home/me/images/tiles/*.png");
-		System.out.println("Note that the Unix shell would expand the global wildcard for you. This would not necessarily work on windows.");
-		System.out.println("Also note that you can integrate this tool with for example Emacs so you don't have to write this stuff directly.");
-		System.out.println("Also all information here is tentative.");		
+		System.out.println("This is not even remotely finished, sorry.");		
 	}
 	public static void main(String[] args) throws Throwable {		
-		if(args.length < 4) {
+		if(args.length != 1) {
 			usage();
+			System.exit(0);
 		}
-		String outFile = args[0];
-		int xSize = Integer.parseInt(args[1]);
-		int ySize = Integer.parseInt(args[2]);		
-		SpriteMaker sm = new SpriteMaker(xSize, ySize);
-				  
-		for(int i = 3; i < args.length; ++i){
-			File f = new File(args[i]);
-			try {				
-				sm.addImage(f);
-			} catch(Throwable t) {
-				System.err.printf("Error reading file \"%s\"%n", f.getAbsolutePath());
+		
+		File inputFile = new File(args[0]);
+						 
+		try(Scanner freader = new Scanner(inputFile)) {
+			String destinationPath = freader.nextLine();
+			int xSize = Integer.parseInt(freader.nextLine());
+			int ySize = Integer.parseInt(freader.nextLine());
+			
+			SpriteMaker sm = new SpriteMaker(xSize, ySize);
+			
+			while(freader.hasNextLine()) {
+				File image = new File(freader.nextLine());
+				sm.addImage(image);
+			}
+			
+			File output = new File(destinationPath);
+
+			sm.save(output);
+			System.out.printf("Successfully made new spritesheet file \"%s\"%n", output.getAbsolutePath());
+		}
+		catch(Throwable t) {
+				System.err.printf("Error reading file \"%s\"%n", inputFile);
 				throw t;
-			}			
-		}
+		}			
 
-		File output = new File(outFile);
-
-		sm.save(output);
-
-		System.out.printf("Successfully made new spritesheet file \"%s\"%n", output.getAbsolutePath());
+		
 	}
 }

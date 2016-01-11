@@ -11,6 +11,8 @@ import java.util.NoSuchElementException;
 
 import javax.imageio.ImageIO;
 
+import no.haakon.flatsum.exploratory.SpriteSheet;
+
 public class FileImageLoader {
 	Map<String, BufferedImage> imageBuffer;
 
@@ -64,5 +66,13 @@ public class FileImageLoader {
 		BufferedImage image = ImageIO.read(imageFile);
 		imageBuffer.put(name, image);
 
+	}
+
+	public SpriteSheet makeSpriteSheet(String imageName, int width, int height) {
+		if(!imageBuffer.containsKey(imageName)) {
+			throw new IllegalArgumentException(String.format("No image by the name \"%s\" loaded", imageName));
+		}
+		BufferedImage sprite = getImage(imageName);
+		return new SpriteSheet(sprite, width, height);
 	}
 }
