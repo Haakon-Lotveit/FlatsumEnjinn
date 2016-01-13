@@ -5,14 +5,14 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import no.haakon.flatsum.graphic.graphic.window.GraphicWorkload;
-import no.haakon.flatsum.level.Level;
+import no.haakon.flatsum.level.LevelGraphics;
 
 public class JustPaintLevel implements GraphicWorkload {
 
 	private volatile Canvas canvas;
-	private volatile Level level;
+	private volatile LevelGraphics level;
 	
-	public JustPaintLevel(Level level, Canvas canvas) {
+	public JustPaintLevel(LevelGraphics level, Canvas canvas) {
 		this.level = level;
 		this.canvas = canvas;
 	}

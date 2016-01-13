@@ -6,9 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import no.haakon.flatsum.level.Layer;
-import no.haakon.flatsum.level.Level;
+import no.haakon.flatsum.level.LevelGraphics;
 
-public class FlatLevel implements Level {
+public class FlatLevel implements LevelGraphics {
 	private Layer layer;
 
 	public FlatLevel(Layer layer) throws IOException {

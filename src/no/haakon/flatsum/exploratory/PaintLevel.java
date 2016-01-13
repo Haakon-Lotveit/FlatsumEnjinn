@@ -5,13 +5,12 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import no.haakon.flatsum.graphic.graphic.window.GraphicWorkload;
-import no.haakon.flatsum.level.Level;
 
 public class PaintLevel implements GraphicWorkload {
 	private Canvas canvas;
-	private Level level;
+	private GameMap level;
 
-	public PaintLevel(Canvas canvas, Level level) {
+	public PaintLevel(Canvas canvas, GameMap level) {
 		this.canvas = canvas;
 		this.level = level;
 	}
@@ -22,22 +21,22 @@ public class PaintLevel implements GraphicWorkload {
 		BufferStrategy bs = canvas.getBufferStrategy();
 
 		while(true){
-			Graphics gfx = bs.getDrawGraphics();
-						
-			level.paint(gfx);
-
-			gfx.dispose();
-			bs.show();
-			
 			try {
 				Thread.sleep(750L);
+				Graphics gfx = bs.getDrawGraphics();
+
+				level.paint(gfx);
+
+				gfx.dispose();
+				bs.show();
+
 			} catch (InterruptedException e) {
-				System.out.println("Interruption found");
+				System.out.println("The thread responsible for painting graphics have received an interruption and will shut down");
 				return;
 			}
 		}
 	}
-	
+
 	@Override
 	public void setCanvas(Canvas canvas) {
 		this.canvas = canvas;

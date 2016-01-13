@@ -1,7 +1,5 @@
 package no.haakon.flatsum.exploratory;
 
-import java.util.List;
-
 public final class IntPair {
 	public int x;
 	public int y;

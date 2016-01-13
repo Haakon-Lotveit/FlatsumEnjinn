@@ -1,5 +1,6 @@
 package no.haakon.flatsum.exploratory;
 
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.Random;
@@ -180,7 +181,5 @@ public class FighterGuy implements Guy {
 		else {
 			System.out.println("P2 won");
 		}
-		
 	}
-
 }

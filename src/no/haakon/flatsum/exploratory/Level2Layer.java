@@ -4,9 +4,9 @@ import java.awt.Graphics;
 import java.io.FileNotFoundException;
 
 import no.haakon.flatsum.level.Layer;
-import no.haakon.flatsum.level.Level;
+import no.haakon.flatsum.level.LevelGraphics;
 
-public class Level2Layer implements Level {
+public class Level2Layer implements LevelGraphics {
 
 	private Layer layer1;
 	private Layer layer2;

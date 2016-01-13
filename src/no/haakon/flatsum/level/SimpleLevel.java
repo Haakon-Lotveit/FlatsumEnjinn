@@ -3,7 +3,7 @@ package no.haakon.flatsum.level;
 import java.awt.Graphics;
 import java.util.Arrays;
 
-public class SimpleLevel implements Level {
+public class SimpleLevel implements LevelGraphics {
 	Layer[] layers;
 	
 	public SimpleLevel(int numLayers) {

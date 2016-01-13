@@ -15,9 +15,13 @@ import no.haakon.flatsum.exploratory.SpriteSheet;
 
 public class FileImageLoader {
 	Map<String, BufferedImage> imageBuffer;
-
-	public FileImageLoader(File resourceConfig) throws IOException {
-		imageBuffer = new HashMap<>();
+	int tileWidth;
+	int tileHeight;
+	
+	public FileImageLoader(File resourceConfig, int tileWidth, int tileHeight) throws IOException {
+		this.tileWidth = tileWidth;
+		this.tileHeight = tileHeight;
+		imageBuffer = new HashMap<>();		
 		loadConfiguration(resourceConfig);
 	}
 
@@ -63,16 +67,30 @@ public class FileImageLoader {
 	}
 
 	private void loadImage(String name, File imageFile) throws IOException {
+		try{
 		BufferedImage image = ImageIO.read(imageFile);
 		imageBuffer.put(name, image);
-
+		}
+		catch(IOException ioe) {
+			StringBuilder errorMsg = new StringBuilder(String.format("Error loading \"%s\", file: %s", name, imageFile.getAbsolutePath()));
+			if(!imageFile.exists()) {
+				errorMsg.append(" The file doesn't exist");
+			}
+			else if(imageFile.isDirectory()) {
+				errorMsg.append(" The file points to a directory, not a single file");
+			}
+			else if(!imageFile.canRead()) {
+				errorMsg.append(" The program is not allowed to read the file");
+			}			
+			throw new IOException(errorMsg.toString(), ioe);
+		}
 	}
 
-	public SpriteSheet makeSpriteSheet(String imageName, int width, int height) {
+	public SpriteSheet makeSpriteSheet(String imageName) {
 		if(!imageBuffer.containsKey(imageName)) {
 			throw new IllegalArgumentException(String.format("No image by the name \"%s\" loaded", imageName));
 		}
 		BufferedImage sprite = getImage(imageName);
-		return new SpriteSheet(sprite, width, height);
+		return new SpriteSheet(sprite, tileWidth, tileHeight);
 	}
 }
