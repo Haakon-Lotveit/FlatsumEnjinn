@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import no.flatsum.exploratory.impl.IntPair;
+
 public class SpriteSheetLookup {
 	Map<String, IntPair> registry;
 	

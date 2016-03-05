@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.opencsv.CSVReader;
 
+import no.flatsum.exploratory.impl.IntPair;
 import no.haakon.flatsum.graphic.tile.NoTile;
 import no.haakon.flatsum.graphic.tile.StaticTile128x128;
 import no.haakon.flatsum.graphic.tile.Tile;

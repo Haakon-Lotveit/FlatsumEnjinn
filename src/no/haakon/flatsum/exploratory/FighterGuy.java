@@ -1,6 +1,5 @@
 package no.haakon.flatsum.exploratory;
 
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.Random;

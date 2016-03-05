@@ -2,6 +2,8 @@ package no.haakon.flatsum.exploratory;
 
 import java.awt.Graphics;
 
+import no.flatsum.exploratory.impl.IntPair;
+
 public interface Location {
 	public void onAction();
 	public IntPair getCoordinates();

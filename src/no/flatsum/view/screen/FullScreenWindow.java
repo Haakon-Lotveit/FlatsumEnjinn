@@ -1,5 +1,5 @@
 
-package no.haakon.flatsum.graphic.graphic.window;
+package no.flatsum.view.screen;
 
 import java.awt.Canvas;
 import java.awt.event.KeyListener;

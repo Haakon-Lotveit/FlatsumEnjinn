@@ -3,6 +3,8 @@ package no.haakon.flatsum.exploratory;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import no.flatsum.exploratory.impl.IntPair;
+
 public class Town implements Location {
 	
 	private final IntPair pixelCoordinates;

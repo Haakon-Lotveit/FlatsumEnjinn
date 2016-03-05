@@ -3,6 +3,8 @@ package no.haakon.flatsum.exploratory;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import no.flatsum.exploratory.impl.IntPair;
+
 public class TreasureChest implements GameWorldObject {
 	BufferedImage sprite;
 	private IntPair tileLocation;

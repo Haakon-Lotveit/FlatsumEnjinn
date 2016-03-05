@@ -1,4 +1,4 @@
-package no.haakon.flatsum.exploratory;
+package no.flatsum.exploratory.convenience;
 
 public final class IntPair {
 	public int x;
@@ -14,8 +14,17 @@ public final class IntPair {
 		this.y = y;
 	}
 	
+	public IntPair(IntPair copyMe) {
+		this.x = copyMe.x;
+		this.y = copyMe.y;		
+	}
+	
 	@Override
 	public String toString() {
 		return String.format("IntPair<%d, %d>", x, y);
+	}
+	
+	public static IntPair zeroedIntPair() {
+		return new IntPair(0, 0);
 	}
 }

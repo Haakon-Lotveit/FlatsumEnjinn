@@ -4,7 +4,7 @@ import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
-import no.haakon.flatsum.graphic.graphic.window.GraphicWorkload;
+import no.flatsum.view.screen.GraphicWorkload;
 import no.haakon.flatsum.level.LevelGraphics;
 
 public class JustPaintLevel implements GraphicWorkload {

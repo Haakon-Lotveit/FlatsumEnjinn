@@ -4,9 +4,10 @@ import java.io.File;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import no.flatsum.exploratory.impl.IntPair;
+import no.flatsum.view.screen.GraphicWorkload;
+import no.flatsum.view.screen.Window;
 import no.haakon.flatsum.auxilliary.resource.FileImageLoader;
-import no.haakon.flatsum.graphic.graphic.window.GraphicWorkload;
-import no.haakon.flatsum.graphic.graphic.window.Window;
 import no.haakon.flatsum.level.Layer;
 import no.haakon.flatsum.level.LevelGraphics;
 

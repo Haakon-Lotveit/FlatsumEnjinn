@@ -3,6 +3,9 @@ package no.haakon.flatsum.exploratory;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import no.flatsum.exploratory.convenience.IntPair;
+
+
 public class FighterDude implements Unit {
 	private volatile CompassDirection facing;
 	SpriteSheet sprites;
@@ -96,10 +99,5 @@ public class FighterDude implements Unit {
 		if(index >= xDiffs.length) { index = 0; }
 	}
 
-	@Override
-	public void setTileLocation(IntPair location) {
-		this.tileLocation = location;
-		updatePixelLocation();
-	}
 
 }

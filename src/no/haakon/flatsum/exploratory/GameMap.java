@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import no.flatsum.exploratory.impl.IntPair;
 import no.haakon.flatsum.level.LevelGraphics;
 
 public class GameMap {

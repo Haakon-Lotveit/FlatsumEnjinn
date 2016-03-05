@@ -2,6 +2,8 @@ package no.haakon.flatsum.exploratory;
 
 import java.awt.image.BufferedImage;
 
+import no.flatsum.exploratory.impl.IntPair;
+
 public class SpriteSheet {
 	private final int columns, rows, spriteWidth, spriteHeight;
 	private final BufferedImage spriteSheet;
