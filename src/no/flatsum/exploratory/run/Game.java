@@ -62,6 +62,7 @@ public class Game {
 			map = new OrthographicTopDownSquareMap(tiles, size, size);
 		}
 		
+		
 		/*
 		 * Now that we're done loading things from disk, we create a new window to run our game in.
 		 */
