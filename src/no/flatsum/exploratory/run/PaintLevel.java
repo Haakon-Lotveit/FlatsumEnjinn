@@ -11,11 +11,9 @@ import no.flatsum.view.screen.GraphicWorkload;
 public class PaintLevel implements GraphicWorkload {
 	private Canvas canvas;
 	private GameMap level;
-	private long waitingTime;
-	public PaintLevel(Canvas canvas, GameMap level, int maxFPS) {
+	public PaintLevel(Canvas canvas, GameMap level) {
 		this.canvas = canvas;
 		this.level = level;
-		waitingTime =  1000L / maxFPS;
 	}
 
 	@Override

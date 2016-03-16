@@ -25,17 +25,12 @@ public class MapBuilder {
 		this.tiledMap = tmxLevel; 
 	}
 	public OrthographicTopDownSquareMap build() throws IOException {
-		System.out.println("NB! We only use one layer (the bottom layer) as of now");
-		
 		// Sanity checks
 		if(tiledMap.getRenderorder() != TMXLevel.RenderOrder.RIGHT_DOWN) {
 			throw new IllegalStateException("We can only parse LEFT-DOWN maps, and this map was " + tiledMap.getRenderorder());
 		}
 		if(tiledMap.getOrientation() != TMXLevel.Orientation.ORTHOGONAL) {
 			throw new IllegalStateException("We can only recreate ORTHOGONAL maps, and this map was " + tiledMap.getOrientation());			
-		}
-		if(tiledMap.getLayer(1).getEncoding() != TMXLevelLayer.Encoding.CSV) {
-			throw new IllegalStateException("We can only recreate CSV-endoded maps, and this map was encoded using " + tiledMap.getLayer(1).getEncoding());
 		}
 		
 		int width = tiledMap.getWidth();
@@ -66,9 +61,13 @@ public class MapBuilder {
 			spriter.addSpriteSheet(name, sprite, startingGid);
 		}
 
-		// This is not the best way of doing it, but it works. ;)
-		// TODO: Extend this for all layers (IN PROGRESS)
 		for(int layer = 0; layer < tiledMap.getNumLayers(); ++layer) {
+
+			if(tiledMap.getLayer(layer+1).getEncoding() != TMXLevelLayer.Encoding.CSV) {
+				throw new IllegalStateException("We can only recreate CSV-endoded maps, and this layer was encoded using " + tiledMap.getLayer(layer+1).getEncoding()+". Layer number: " + layer+1);
+			}
+
+			// Not the fastest way to parse the string, but it works
 			String data = tiledMap.getLayer(layer+1).getData().replace("\n", "").replace("\\s", "");
 			String[] datapoints = data.trim().split(",");
 			int index = 0;
