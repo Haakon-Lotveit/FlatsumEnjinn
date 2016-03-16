@@ -1,4 +1,4 @@
-package no.flatsum.exploratory.level;
+package no.flatsum.exploratory.level.tmx;
 import java.io.File;
 import java.io.IOException;
 

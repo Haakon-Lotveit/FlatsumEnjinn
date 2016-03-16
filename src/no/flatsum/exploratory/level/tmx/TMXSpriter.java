@@ -1,4 +1,4 @@
-package no.flatsum.exploratory.level;
+package no.flatsum.exploratory.level.tmx;
 
 import java.awt.image.BufferedImage;
 import java.util.PriorityQueue;
@@ -20,6 +20,11 @@ public class TMXSpriter {
 	}
 
 	public BufferedImage getSprite(int tileID) {
+		// If there is nothing there, then the tileID will be 0
+		if(0 == tileID) {
+			return null;
+		}
+		
 		TMXSheet sheet = findSheet(tileID);
 		int localID = tileID - sheet.startingGid;
 		int col = localID % sheet.numCols;

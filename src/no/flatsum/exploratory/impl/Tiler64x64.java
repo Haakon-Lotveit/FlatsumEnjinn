@@ -38,6 +38,10 @@ public class Tiler64x64 {
 		this(row, column, sprite, 1);
 	}
 
+	public Tiler64x64() {
+		this(0, 0, null);
+	}
+
 	public Tiler64x64 setNumLayers(int numLayers) {
 		this.numLayers = numLayers;
 		return this;
@@ -60,7 +64,10 @@ public class Tiler64x64 {
 	
 	public LayeredTile tile() {
 		LayeredTile tile = new LayeredTile(numLayers, 64, 64, new IntPair(column, row));
-		tile.setLayer(0, sprite);
+		if(null != sprite) {
+			tile.setLayer(0, sprite);
+		}
+		
 		return tile;
 	}
 	

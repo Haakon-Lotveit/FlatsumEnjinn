@@ -1,4 +1,4 @@
-package no.flatsum.exploratory.level;
+package no.flatsum.exploratory.level.tmx;
 
 /**
  * This represents a layer in a TMX-level file, the format used by the Tiled map editor.

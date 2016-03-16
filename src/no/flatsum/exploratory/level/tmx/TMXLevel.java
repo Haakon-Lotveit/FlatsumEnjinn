@@ -1,4 +1,4 @@
-package no.flatsum.exploratory.level;
+package no.flatsum.exploratory.level.tmx;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
