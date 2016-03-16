@@ -31,14 +31,7 @@ public class PaintLevel implements GraphicWorkload {
 			gfx.drawImage(lvl, 0, 0, null);
 			
 			gfx.dispose();
-			bs.show();
-
-			try {
-				Thread.sleep(100L);
-			} catch (InterruptedException e) {
-				System.out.println("The thread responsible for painting graphics have received an interruption and will shut down");
-				return;
-			}
+			bs.show();	
 		}
 	}
 

@@ -1,4 +1,4 @@
-package no.flatsum.exploratory.impl;
+package no.flatsum.exploratory.level;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
