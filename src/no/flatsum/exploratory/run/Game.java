@@ -6,11 +6,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.List;
 
-import no.flatsum.exploratory.impl.Tiler64x64;
 import no.flatsum.exploratory.inter.GameMap;
-import no.flatsum.exploratory.inter.Tile;
 import no.flatsum.exploratory.level.MapBuilder;
-import no.flatsum.exploratory.level.OrthographicTopDownSquareMap;
 import no.flatsum.exploratory.level.TMXLevel;
 import no.flatsum.exploratory.level.TMXLevelParser;
 import no.flatsum.loader.ImageLoader;
@@ -38,22 +35,14 @@ public class Game {
 		System.out.println(loader.toString());
 		
 		/*
-		 * Then we set up a Tiler that can spit out tiles for us.
-		 */
-		
-		Tiler64x64 tiler = new Tiler64x64(0, 0, loader.getSprite("static-tiles", 0, 1));
-		
-		/*
-		 * We need to read in a map at some point, so might as well do it here:
+		 * Reads in a map from a TMX-file
 		 */
 		TMXLevelParser levelParser = new TMXLevelParser();
 		File levelFile = new File("one-layer.tmx");
 		TMXLevel tmxLevel = levelParser.readLevel(levelFile);
-		System.out.println(tmxLevel);
 		
 		/*
-		 * Code that turns it into an actual GameMap for some sort is not yet complete.
-		 * But it will go here when it is.
+	     * builds the map. will probably be refactored into the relevant implementation's class as a static method
 		 */
 		MapBuilder mapBuilder = new MapBuilder(tmxLevel);
 		GameMap map = mapBuilder.build();

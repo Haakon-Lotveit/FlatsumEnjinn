@@ -20,7 +20,6 @@ public class TMXSpriter {
 	}
 
 	public BufferedImage getSprite(int tileID) {
-		System.out.println(sheets);
 		TMXSheet sheet = findSheet(tileID);
 		int localID = tileID - sheet.startingGid;
 		int col = localID % sheet.numCols;

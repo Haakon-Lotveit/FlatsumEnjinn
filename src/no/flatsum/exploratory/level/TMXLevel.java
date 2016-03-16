@@ -5,16 +5,16 @@ import java.util.Map;
 
 public class TMXLevel {
 
-	public String version;
-	public Orientation orientation;
-	public RenderOrder renderOrder;
-	public int width;
-	public int height;
-	public int tilewidth;
-	public int tileheight;
-	public String nextobjectid;
-	Map<String, TMXLevelLayer> layersName = new HashMap<>();
-	Map<Integer, TMXLevelLayer> layersLayer = new HashMap<>();
+	private String version;
+	private Orientation orientation;
+	private RenderOrder renderOrder;
+	private int width;
+	private int height;
+	private int tilewidth;
+	private int tileheight;
+	private String nextobjectid;
+	private Map<String, TMXLevelLayer> layersName = new HashMap<>();
+	private Map<Integer, TMXLevelLayer> layersLayer = new HashMap<>();
 
 	Map<String, TMXTileset> tilesets = new HashMap<>();
 
@@ -24,6 +24,14 @@ public class TMXLevel {
 
 	public TMXTileset getTileset(String tilesetName) {
 		return tilesets.get(tilesetName);
+	}
+
+	public int getNumTilesets() {
+		return tilesets.size();
+	}
+
+	public Collection<TMXTileset> tilesets() {
+		return tilesets.values();
 	}
 
 	public void addLayer(TMXLevelLayer layer) {
@@ -39,6 +47,9 @@ public class TMXLevel {
 		return layersLayer.get(layer);
 	}
 
+	public int getNumLayers() {
+		return layersName.size();
+	}
 	public String getNextobjectid() {
 		return nextobjectid;
 	}
@@ -156,9 +167,5 @@ public class TMXLevel {
 				throw new IllegalArgumentException(String.format("No Orientation by name %s", orientation));
 			}
 		}
-	}
-
-	public Collection<TMXTileset> tilesets() {
-		return tilesets.values();
 	}
 }
