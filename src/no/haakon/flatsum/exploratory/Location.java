@@ -2,7 +2,7 @@ package no.haakon.flatsum.exploratory;
 
 import java.awt.Graphics;
 
-import no.flatsum.exploratory.impl.IntPair;
+import no.flatsum.exploratory.convenience.IntPair;
 
 public interface Location {
 	public void onAction();

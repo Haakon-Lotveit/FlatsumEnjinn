@@ -3,7 +3,7 @@ package no.haakon.flatsum.graphic.tile;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import no.flatsum.exploratory.impl.IntPair;
+import no.flatsum.exploratory.convenience.IntPair;
 
 public final class StaticTile128x128 implements Tile {
 	private final int width = 128;

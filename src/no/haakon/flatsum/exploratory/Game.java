@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import no.flatsum.exploratory.impl.IntPair;
+import no.flatsum.exploratory.convenience.IntPair;
 import no.flatsum.view.screen.GraphicWorkload;
 import no.flatsum.view.screen.Window;
 import no.haakon.flatsum.auxilliary.resource.FileImageLoader;
@@ -38,8 +38,6 @@ public class Game {
 		
 		
 		Location town = new Town(new IntPair(128, 128), new IntPair(1, 1), spriteSheet.getSprite(new IntPair(1,0)));
-		TreasureChest chest = new TreasureChest(imageLoader.getImage("treasure-chest"), new IntPair(4,4), 128, 128);
-		Unit fighter = new FighterDude(imageLoader.makeSpriteSheet("fighter"), new IntPair(4, 2), 128, 128);
 		
 		Layer background = SimpleLayer128x128.builder()
 				.setCsvFile(new File("lvl/testlvl/1.csv"))
@@ -60,15 +58,12 @@ public class Game {
 		
 		GameMap firstLevel = new GameMap(level);
 		firstLevel.putLocation(town);
-		firstLevel.putGameWorldObject(chest);
-		firstLevel.addUnit(fighter);
 		
 		Window gameWindow = new Window("Test", 1024, 768);
 		
 		GraphicWorkload workload = new PaintLevel(gameWindow.getCanvas(), firstLevel);
 		
 		TickerWorker ticker = new TickerWorker(1000_000_000L);
-		ticker.addActor(fighter);
 		
 		// We need some threads to do our bidding.
 		// We'll grab one for each of audio, video, I/O and AI.
